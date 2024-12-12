@@ -1,5 +1,5 @@
 
-name: model-training
+name: model-loan-defaults
 on: [push]
 jobs:
   run:
@@ -12,6 +12,18 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # Your ML Workflow goes here.
           pip install -r requirements.txt
           python process_data.py
           python train.py
+
+          echo "##Model Metrics." > report.md
+          cat metrics.txt >> report.md
+
+          echo "##Data Viz." >> report.md
+          cml-publish feature_importances.png --md >> report.md
+          cml=publish confusion matix.png --md >> report.md
+
+          cml-send -comment report.md
+
+          
