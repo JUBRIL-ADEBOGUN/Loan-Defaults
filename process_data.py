@@ -25,6 +25,7 @@ df['duration'] = (df['duration']/7).round(0).astype('int64')
 
 col_to_int = ['Total_Amount','Total_Amount_to_Repay', 'Amount_Funded_By_Lender','Lender_portion_to_be_repaid']
 df[col_to_int] = df[col_to_int].round(0).astype('int64')
+df['year'] = df['disbursement_date'].dt.year
 
 ordinal = OrdinalEncoder(dtype='int')
 # onehot = OneHotEncoder(sparse_output=False, dtype='int')
