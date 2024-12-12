@@ -48,7 +48,7 @@ y_train = trainx.target
 X_val = val.drop(todrop, axis=1)
 y_val = val.target
 
-lgbclf = lgb.LGBMClassifier(random_state=23, force_col_wise=True, max_depth=11, n_estimators=500,
+lgbclf = lgb.LGBMClassifier(random_state=23, force_col_wise=True, max_depth=-1, n_estimators=500,
                             importance_type='gain', #early_stopping_rounds=100
                             )
 lgbclf.fit(X_train, y_train, categorical_feature='from_dtype', eval_set=(X_val, y_val), eval_metric='F1',
@@ -85,7 +85,7 @@ title_fs = 22 #title font size
 sns.set(style='whitegrid')
 
 
-ax = sns.barplot(data=feature_df, x='features', y='importances')
+ax = sns.barplot(data=feature_df, y='features', x='importances')
 ax.set_xlabel("Importance", fontsize=axis_fs)
 ax.set_ylabel('Feature', fontsize=axis_fs)
 ax.set_title('LightGBM\n feature importance', fontsize=title_fs)
