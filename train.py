@@ -21,7 +21,7 @@ warnings.filterwarnings('ignore')
 ################################################
 
 train = pd.read_csv('./data/cleaned_train.csv')
-# print(f"Train Shape: {train.shape[0]} rows and {train.shape[1]} columns")
+print(f"Train Shape: {train.shape[0]} rows and {train.shape[1]} columns")
 
 
 ################################################
@@ -30,7 +30,7 @@ train = pd.read_csv('./data/cleaned_train.csv')
 
 train['loan_interest'] = train['Total_Amount_to_Repay'] - train['Total_Amount']
 train['loan_rate'] = train['loan_interest']/ train['Total_Amount']
-dtrain['lender_interest'] = train['Lender_portion_to_be_repaid'] - train['Amount_Funded_By_Lender']
+train['lender_interest'] = train['Lender_portion_to_be_repaid'] - train['Amount_Funded_By_Lender']
 # train['year'] = train['disbursement_date'].dt.year
 
 #################################################
@@ -39,7 +39,7 @@ dtrain['lender_interest'] = train['Lender_portion_to_be_repaid'] - train['Amount
 
 todrop = ["ID", 'customer_id', 'target', 'lender_id', 'loan_type', 'Total_Amount_to_Repay',
         'Lender_portion_to_be_repaid', 'Amount_Funded_By_Lender',
-        'interest_diff']
+        ]
 
 trainx, val = train_test_split(train, stratify=train['target'], random_state=23)
 X_train = trainx.drop(todrop, axis=1)
