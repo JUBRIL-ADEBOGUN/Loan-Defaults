@@ -20,8 +20,8 @@ jobs:
           cat metrics.txt >> report.md
 
           echo ##"DATA VIZ." >> report.md
-          cml-publish feature_importance.png >> report.md
-          cml-publish confusion_matrix.png >> report.md
+          cml-publish feature_importance.png --md >> report.md
+          cml-publish confusion_matrix.png --md >> report.md
 
           cml-send-comment report.md
           
