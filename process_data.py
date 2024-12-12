@@ -15,6 +15,7 @@ test = pd.read_csv('Test.csv', parse_dates=['disbursement_date','due_date'])
 
 test['target'] = -1
 df = pd.concat([train, test], ignore_index=True).reset_index(drop=True)
+
 ################################################
 ########### PREPROCESS DATA ####################
 ################################################
@@ -26,7 +27,7 @@ col_to_int = ['Total_Amount','Total_Amount_to_Repay', 'Amount_Funded_By_Lender',
 df[col_to_int] = df[col_to_int].round(0).astype('int64')
 
 ordinal = OrdinalEncoder(dtype='int')
-onehot = OneHotEncoder(sparse_output=False, dtype='int')
+# onehot = OneHotEncoder(sparse_output=False, dtype='int')
 cats = ['lender_id', 'loan_type', 'year']
 for cat in cats:
     df[cat] = ordinal.fit_transform(df[[cat]])
