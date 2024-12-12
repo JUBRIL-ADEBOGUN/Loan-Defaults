@@ -76,15 +76,15 @@ with open('metrics.txt', 'w') as outfile:
 importances = lgbclf.feature_importances_
 labels = X_train.columns
 
-feature_df = pd.DataFrame(list(zip(labels, importances)), columns=['Features', 'importances'])
-feature_df = feature_df.sort_values(by='importance', ascending=False)
+feature_df = pd.DataFrame(list(zip(labels, importances)), columns=['features', 'importances'])
+feature_df = feature_df.sort_values(by='importances', ascending=False)
 # image formatting.
 axis_fs = 18 #axis font size
 title_fs = 22 #title font size
 sns.set(style='whitegrid')
 
 
-ax = sns.barplot(y=feature, x=importances, data=feature_df)
+ax = sns.barplot(y=features, x=importances, data=feature_df)
 ax.set_xlabel("Importance", fontsize=axis_fs)
 ax.set_ylabelO('Feature', fontsize=axis_fs)
 ax.set_title('LightGBM\n feature importance', fontsize=title_fs)
@@ -96,5 +96,6 @@ plt.close()
 ########## PLOT CONFUSION MATRIX. ##############
 ################################################
 ConfusionMatrixDisplay.from_predictions(y_val, y_pred)
+plt.title("Model confusion Matrix")
 plt.savefig('confusion_matrix.png', dpi=120)
 plt.close()
