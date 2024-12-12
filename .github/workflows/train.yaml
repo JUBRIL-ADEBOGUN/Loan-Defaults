@@ -12,7 +12,7 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Youe ML Workflows goes here.
-          pip install -r requirements.txt
+          pip install -r requirement.txt
           python process_data.py
           python train.py
 
