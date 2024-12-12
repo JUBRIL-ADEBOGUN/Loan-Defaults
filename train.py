@@ -84,7 +84,7 @@ title_fs = 22 #title font size
 sns.set(style='whitegrid')
 
 
-ax = sns.barplot(y=features, x=importances, data=feature_df)
+ax = sns.barplot(data=feature_df, x=features, y=importances)
 ax.set_xlabel("Importance", fontsize=axis_fs)
 ax.set_ylabelO('Feature', fontsize=axis_fs)
 ax.set_title('LightGBM\n feature importance', fontsize=title_fs)
