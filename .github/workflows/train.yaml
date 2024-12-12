@@ -2,7 +2,8 @@ name: model-training
 on: [push]
 jobs:
   run:
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
+    container: docker://dcvorg/cml-py3:latest
     steps:
       - uses: actions/checkout@v3
       # - uses: actions/setup-python@v4
