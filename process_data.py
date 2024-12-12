@@ -11,7 +11,7 @@ warnings.filterwarnings('ignore')
 ################################################
 
 train = pd.read_csv('Train.csv', parse_dates=['disbursement_date','due_date'])
-train = pd.read_csv('Test.csv', parse_dates=['disbursement_date','due_date'])
+test = pd.read_csv('Test.csv', parse_dates=['disbursement_date','due_date'])
 
 test['target'] = -1
 df = pd.concat([train, test], ignore_index=True).reset_index(drop=True)
