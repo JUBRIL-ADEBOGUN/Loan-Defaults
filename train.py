@@ -20,7 +20,7 @@ warnings.filterwarnings('ignore')
 ########### IMPORTING FILE #####################
 ################################################
 
-train = pd.read_csv('./data/cleaned_train.csv', parse_dates=['disbursement_date','due_date'])
+train = pd.read_csv('./data/cleaned_train.csv')
 # print(f"Train Shape: {train.shape[0]} rows and {train.shape[1]} columns")
 
 
@@ -31,7 +31,7 @@ train = pd.read_csv('./data/cleaned_train.csv', parse_dates=['disbursement_date'
 train['loan_interest'] = train['Total_Amount_to_Repay'] - train['Total_Amount']
 train['loan_rate'] = train['loan_interest']/ train['Total_Amount']
 dtrain['lender_interest'] = train['Lender_portion_to_be_repaid'] - train['Amount_Funded_By_Lender']
-train['year'] = train['disbursement_date'].dt.year
+# train['year'] = train['disbursement_date'].dt.year
 
 #################################################
 ################### MODELLING.###################
