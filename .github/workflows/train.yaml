@@ -2,15 +2,15 @@ name: model-training
 on: [push]
 jobs:
   run:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     container: docker://dvcorg/cml-py3:latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
-      - uses: iterative/setup-cml@v1
+      # - uses: actions/setup-python@v4
+      # - uses: iterative/setup-cml@v1
       - name: Train model
         env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Youe ML Workflows goes here.
           pip install -r requirement.txt
