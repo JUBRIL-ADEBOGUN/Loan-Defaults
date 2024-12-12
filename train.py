@@ -41,6 +41,7 @@ todrop = ["ID", 'customer_id', 'target', 'lender_id', 'loan_type', 'Total_Amount
         'Lender_portion_to_be_repaid', 'Amount_Funded_By_Lender',
         ]
 
+print("Initializing modelling")
 trainx, val = train_test_split(train, stratify=train['target'], random_state=23)
 X_train = trainx.drop(todrop, axis=1)
 y_train = trainx.target
