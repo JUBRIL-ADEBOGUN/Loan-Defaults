@@ -37,8 +37,6 @@ for cat in cats:
 todrop = ['disbursement_date', 'due_date', 'country_id', 'tbl_loan_id', 'New_versus_Repeat']
 df = df.drop(todrop, axis=1)
 df['duration'] = df['duration'].astype('int')
-print("Processing Done.")
-
 train = df[df['target'] != -1]
 test = df[df['target'] == -1]
 train.to_csv('./data/cleaned_train.csv', index=False)
