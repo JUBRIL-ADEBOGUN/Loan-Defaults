@@ -90,7 +90,7 @@ ax.set_xlabel("Importance", fontsize=axis_fs)
 ax.set_ylabel('Feature', fontsize=axis_fs)
 ax.set_title('LightGBM\n feature importance', fontsize=title_fs)
 plt.tight_layout()
-plt.savefig("./feature_importance.png", dpi=120)
+plt.savefig("feature_importance.png", dpi=120)
 plt.close()
 
 ################################################
@@ -98,7 +98,7 @@ plt.close()
 ################################################
 ConfusionMatrixDisplay.from_predictions(y_val, y_pred)
 plt.title("Model confusion Matrix")
-plt.savefig('./confusion_matrix.png', dpi=120)
+plt.savefig('confusion_matrix.png', dpi=120)
 plt.close()
 
 print("Training Done..")
