@@ -59,7 +59,7 @@ y_pred = lgbclf.predict(X_val)
 train_f1 = f1_score(y_train, lgbclf.predict(X_train), average='binary')
 train_roc_auc = roc_auc_score(y_train, lgbclf.predict_proba(X_train)[:,1])
 
-val_f1 = f1_score(y_train, y_pred, average='binary')
+val_f1 = f1_score(y_val, y_pred, average='binary')
 val_roc_auc = roc_auc_score(y_val, lgbclf.predict_proba(X_val)[:,1])
 
 # write metrics to a file.
