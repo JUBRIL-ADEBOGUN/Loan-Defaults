@@ -1,7 +1,8 @@
 pandas
+scikit-learn
+lightgbm
+shap
 numpy
 matplotlib
 seaborn
-sklearn v1.5.2
-lightgbm
-shap
+
