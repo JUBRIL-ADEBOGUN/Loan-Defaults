@@ -21,7 +21,7 @@ jobs:
 
 
           echo '## Data Viz.'
-          echo '![inline](./feature_importance.png)' >> report.md
-          echo '![inline](./confusion_matrix.png)' >> report.md
+          echo '![](./feature_importance.png)' >> report.md
+          echo '![](./confusion_matrix.png)' >> report.md
           cml comment create --publish report.md
          
