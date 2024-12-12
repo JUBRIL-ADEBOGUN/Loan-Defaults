@@ -64,10 +64,10 @@ val_roc_auc = roc_auc_score(y_val, lgbclf.predict_proba(X_val)[:,1])
 
 # write metrics to a file.
 with open('metrics.txt', 'w') as outfile:
-    outfile.write("Training F1 score: %2.1f%%\n" %train_f1)
-    outfile.write("Training ROC AUC score: %2.1f%%\n" %train_roc_auc)
-    outfile.write("Validation F1 score: %2.1f%%\n" %val_f1)
-    outfile.write("Validation ROC AUC score: %2.1f%%\n" %val_roc_auc)
+    outfile.write("Training F1 score: %.3f%%\n" %train_f1)
+    outfile.write("Training ROC AUC score: %.2f%%\n" %train_roc_auc)
+    outfile.write("Validation F1 score: %.3f%%\n" %val_f1)
+    outfile.write("Validation ROC AUC score: %.3f%%\n" %val_roc_auc)
 
 ################################################
 ########## PLOT FEATURE IMPORTANCE.#############
@@ -89,7 +89,7 @@ ax.set_xlabel("Importance", fontsize=axis_fs)
 ax.set_ylabel('Feature', fontsize=axis_fs)
 ax.set_title('LightGBM\n feature importance', fontsize=title_fs)
 plt.tight_layout()
-plt.savefig("feature_importance.png", dpi=120)
+plt.savefig("./feature_importance.png", dpi=120)
 plt.close()
 
 ################################################
@@ -97,7 +97,7 @@ plt.close()
 ################################################
 ConfusionMatrixDisplay.from_predictions(y_val, y_pred)
 plt.title("Model confusion Matrix")
-plt.savefig('confusion_matrix.png', dpi=120)
+plt.savefig('./confusion_matrix.png', dpi=120)
 plt.close()
 
 print("Training Done..")
