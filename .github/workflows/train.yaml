@@ -13,12 +13,15 @@ jobs:
         run: |
           pip install -r requirement.txt
           python process_data.py
-          python train.py --output feature_importance.png feature_importance.png
+          python train.py 
           depth=5
 
           echo "## Model Metrics" > report.md
           cat metrics.txt >> report.md
-          echo '![](./feature_importance.png)' >> report.md
-          echo '![](./confusion_matrix.png)' >> report.md
+
+
+          echo '## Data Viz.'
+          echo '![inline](./feature_importance.png)' >> report.md
+          echo '![inline](./confusion_matrix.png)' >> report.md
           cml comment create report.md
          
