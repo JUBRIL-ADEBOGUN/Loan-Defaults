@@ -2,6 +2,6 @@ pandas
 numpy
 matplotlib
 seaborn
-sklearn v1.5.2
+sklearn
 lightgbm
 shap
