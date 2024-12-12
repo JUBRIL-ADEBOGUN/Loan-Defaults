@@ -3,28 +3,22 @@ on: [push]
 jobs:
   run:
     runs-on: ubuntu-latest
-    # container: docker://dvcorg/cml-py3:latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
       - uses: iterative/setup-cml@v1
       - name: Train model
         env:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Youe ML Workflows goes here.
-          pip install -r requirement.txt
+          pip install -r requirements.txt
           python process_data.py
           python train.py
+          depth=5
 
-          echo ##" MODEL METRICS" > report.md
+          echo "## Model Metrics" > report.md
           cat metrics.txt >> report.md
-
-          echo ##"DATA VIZ." >> report.md
-          cml-publish feature_importance.png --md >> report.md
-          cml-publish confusion_matrix.png --md >> report.md
-
-          cml-send-comment report.md
-          
-
-          
+          echo "![](./feature_importance.png)" >> report.md
+          echo "![](./feature_importance.png)" >> report.md
+          cml comment create report.md
+         
