@@ -4,8 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from sklearn import tree
-from sklearn.ensemble import RandomForestClassifier
+# from sklearn import tree
+# from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, f1_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import ConfusionMatrixDisplay
@@ -48,6 +48,7 @@ y_train = trainx.target
 X_val = val.drop(todrop, axis=1)
 y_val = val.target
 
+print(f"Features use during training are: {list(X_train.columns)")
 lgbclf = lgb.LGBMClassifier(random_state=23, force_col_wise=True, max_depth=11, n_estimators=500,
                             importance_type='gain', #early_stopping_rounds=100
                             )
@@ -85,7 +86,7 @@ title_fs = 22 #title font size
 sns.set(style='whitegrid')
 
 
-ax = sns.barplot(data=feature_df, x='features', y='importances')
+ax = sns.barplot(data=feature_df, y='features', x='importances')
 ax.set_xlabel("Importance", fontsize=axis_fs)
 ax.set_ylabel('Feature', fontsize=axis_fs)
 ax.set_title('LightGBM\n feature importance', fontsize=title_fs)
@@ -101,4 +102,10 @@ plt.title("Model confusion Matrix")
 plt.savefig('./confusion_matrix.png', dpi=120)
 plt.close()
 
+###############################################
+########### CLASSIFICATION REPORT #############
+###############################################
+
+class_report = classification_report(y_val, y_pred)
+print(class_report)
 print("Training Done..")
