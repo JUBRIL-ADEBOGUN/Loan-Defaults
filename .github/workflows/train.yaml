@@ -19,7 +19,7 @@ jobs:
           echo "## Model Metrics" > report.md
           cat metrics.txt >> report.md
           
-          cat class_report >> report.md
+          #cat class_report >> report.md
 
           echo '## Data Viz.'
           echo '![](./feature_importance.png)' >> report.md
