@@ -48,8 +48,12 @@ y_train = trainx.target
 X_val = val.drop(todrop, axis=1)
 y_val = val.target
 
+
 print(f"Features use during training are: {list(X_train.columns)}")
 lgbclf = lgb.LGBMClassifier(random_state=23, force_col_wise=True, max_depth=11, n_estimators=500,
+
+lgbclf = lgb.LGBMClassifier(random_state=23, force_col_wise=True, max_depth=-1, n_estimators=500,
+
                             importance_type='gain', #early_stopping_rounds=100
                             )
 lgbclf.fit(X_train, y_train, categorical_feature='from_dtype', eval_set=(X_val, y_val), eval_metric='F1',
