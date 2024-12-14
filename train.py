@@ -37,8 +37,8 @@ train['lender_interest'] = train['Lender_portion_to_be_repaid'] - train['Amount_
 ################### MODELLING.###################
 #################################################
 
-todrop = ["ID", 'customer_id', 'target', 'lender_id', 'loan_type', 'Total_Amount_to_Repay',
-        'Lender_portion_to_be_repaid', 'Amount_Funded_By_Lender',
+todrop = ["ID", 'customer_id', 'target',# 'lender_id', 'loan_type', 'Total_Amount_to_Repay',
+       # 'Lender_portion_to_be_repaid', 'Amount_Funded_By_Lender',
         ]
 
 print("Initializing modelling")
@@ -51,8 +51,7 @@ y_val = val.target
 
 print(f"Features use during training are: {list(X_train.columns)}")
 # lgbclf = lgb.LGBMClassifier(random_state=23, force_col_wise=True, max_depth=11, n_estimators=500,
-                            importance_type='gain', #early_stopping_rounds=100
-                            )
+                            importance_type='gain', early_stopping_rounds=5)
 lgbclf.fit(X_train, y_train, categorical_feature='from_dtype', eval_set=(X_val, y_val), eval_metric='F1')
 
 # make prediction and evaluate model.
